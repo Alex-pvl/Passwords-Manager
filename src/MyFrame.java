@@ -4,9 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,22 +13,11 @@ import java.util.Arrays;
 
 
 public class MyFrame extends JFrame {
-	private static final File directory = new File("C:\\Users\\sasha\\passwords");
 	private static final File file = new File("C:\\Users\\sasha\\passwords\\passwords.txt");
-
-	// run once, then delete this static block and 'directory'
-	static {
-		try {
-			Files.createDirectory(directory.toPath());
-			file.createNewFile();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
 
 	public static final String CONNECTION_URL = "jdbc:postgresql://localhost:5432/encoder";
 	private final Connection connection =
-			DriverManager.getConnection(CONNECTION_URL, "postgres", "**REDACTED**");
+			DriverManager.getConnection(CONNECTION_URL, "postgres", "sa3862930ha");
 
 	JPasswordField passwordField;
 	JTextField sourceField;
